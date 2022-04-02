@@ -1,0 +1,9 @@
+{
+	"name": "devdftesting",
+	"location": "southindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "779f3563-dc2c-4d0b-98fc-d649acd52289",
+		"tenantId": "50b9db56-0d9e-4ccb-a314-d9305cf3201d"
+	}
+}
