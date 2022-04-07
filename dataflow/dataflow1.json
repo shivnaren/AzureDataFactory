@@ -1,0 +1,154 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_address",
+						"type": "DatasetReference"
+					},
+					"name": "Address"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_customer",
+						"type": "DatasetReference"
+					},
+					"name": "Customer"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_products",
+						"type": "DatasetReference"
+					},
+					"name": "Products"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_transactions",
+						"type": "DatasetReference"
+					},
+					"name": "Transactions"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_srs",
+						"type": "DatasetReference"
+					},
+					"name": "SRS"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "AddresDerivedColumn"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          address_id as string,",
+				"          address_type as string,",
+				"          address1 as string,",
+				"          address2 as string,",
+				"          address3 as string,",
+				"          city as string,",
+				"          state as string,",
+				"          country as string,",
+				"          zipcode as string,",
+				"          phone as string,",
+				"          email as string,",
+				"          Fax as string,",
+				"          customer_id as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> Address",
+				"source(output(",
+				"          customer_id as string,",
+				"          source_id as string,",
+				"          first_name as string,",
+				"          middle_name as string,",
+				"          last_name as string,",
+				"          dob as string,",
+				"          gender as string,",
+				"          nationality as string,",
+				"          marital_status as string,",
+				"          occupation as string,",
+				"          avg_family_size as string,",
+				"          income_level as string,",
+				"          date_onboarded as string,",
+				"          created_date as string,",
+				"          updated_date as string,",
+				"          effective_start_date as string,",
+				"          effective_end_date as string,",
+				"          Identifier_type as string,",
+				"          identifier as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> Customer",
+				"source(output(",
+				"          product_id as string,",
+				"          product_name as string,",
+				"          product_type as string,",
+				"          product_description as string,",
+				"          issue_date as string,",
+				"          valid_till_date as string,",
+				"          account_status as string,",
+				"          credit_card_limit as string,",
+				"          interest_rate as string,",
+				"          tenure as string,",
+				"          service_charges as string,",
+				"          customer_id as string,",
+				"          fd_principal_amount as string,",
+				"          loan_collateral_value as string,",
+				"          loan_amount as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> Products",
+				"source(output(",
+				"          transaction_id as string,",
+				"          customer_id as string,",
+				"          product_id as string,",
+				"          merchant_name as string,",
+				"          transaction_description as string,",
+				"          transaction_amount as string,",
+				"          type_deposit_withdrawal as string,",
+				"          transaction_date as string,",
+				"          channel as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> Transactions",
+				"source(output(",
+				"          sr_id as string,",
+				"          customer_id as string,",
+				"          product_id as string,",
+				"          sr_description as string,",
+				"          sr_open_date as string,",
+				"          sr_close_date as string,",
+				"          sr_type as string,",
+				"          channel as string,",
+				"          sr_cust_feedback as string,",
+				"          {Feedback type} as string,",
+				"          {Feedback Severity (Low, Medium, High)} as string,",
+				"          { Feedback} as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> SRS",
+				"Address derive(address1_derived = split(address1, ' ')[1],",
+				"          address2_derived = split(address1, ' ')[2],",
+				"          address3_derived = trim(split(address1, ' ')[3]+ ' '+case(split(address1, ' ')[4] != '' , split(address1, ' ')[4], '')+ ' '+case(split(address1, ' ')[5] != '' , split(address1, ' ')[5], ''))) ~> AddresDerivedColumn"
+			]
+		}
+	}
+}
