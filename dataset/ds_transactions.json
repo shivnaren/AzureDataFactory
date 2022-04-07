@@ -1,0 +1,54 @@
+{
+	"name": "ds_transactions",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_azuresqldb",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "transaction_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "customer_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "product_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "merchant_name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "transaction_description",
+				"type": "nvarchar"
+			},
+			{
+				"name": "transaction_amount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "type_deposit_withdrawal",
+				"type": "nvarchar"
+			},
+			{
+				"name": "transaction_date",
+				"type": "nvarchar"
+			},
+			{
+				"name": "channel",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Transactions"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

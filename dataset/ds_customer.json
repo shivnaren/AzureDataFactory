@@ -1,0 +1,94 @@
+{
+	"name": "ds_customer",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_azuresqldb",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "customer_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "source_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "first_name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "middle_name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "last_name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "dob",
+				"type": "nvarchar"
+			},
+			{
+				"name": "gender",
+				"type": "nvarchar"
+			},
+			{
+				"name": "nationality",
+				"type": "nvarchar"
+			},
+			{
+				"name": "marital_status",
+				"type": "nvarchar"
+			},
+			{
+				"name": "occupation",
+				"type": "nvarchar"
+			},
+			{
+				"name": "avg_family_size",
+				"type": "nvarchar"
+			},
+			{
+				"name": "income_level",
+				"type": "nvarchar"
+			},
+			{
+				"name": "date_onboarded",
+				"type": "nvarchar"
+			},
+			{
+				"name": "created_date",
+				"type": "nvarchar"
+			},
+			{
+				"name": "updated_date",
+				"type": "nvarchar"
+			},
+			{
+				"name": "effective_start_date",
+				"type": "nvarchar"
+			},
+			{
+				"name": "effective_end_date",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Identifier_type",
+				"type": "nvarchar"
+			},
+			{
+				"name": "identifier",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Customer"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

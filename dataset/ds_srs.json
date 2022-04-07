@@ -1,0 +1,66 @@
+{
+	"name": "ds_srs",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_azuresqldb",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "sr_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "customer_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "product_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "sr_description",
+				"type": "nvarchar"
+			},
+			{
+				"name": "sr_open_date",
+				"type": "nvarchar"
+			},
+			{
+				"name": "sr_close_date",
+				"type": "nvarchar"
+			},
+			{
+				"name": "sr_type",
+				"type": "nvarchar"
+			},
+			{
+				"name": "channel",
+				"type": "nvarchar"
+			},
+			{
+				"name": "sr_cust_feedback",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Feedback type",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Feedback Severity (Low, Medium, High)",
+				"type": "nvarchar"
+			},
+			{
+				"name": " Feedback",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "SRS"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

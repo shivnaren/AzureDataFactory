@@ -1,0 +1,78 @@
+{
+	"name": "ds_products",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_azuresqldb",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "product_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "product_name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "product_type",
+				"type": "nvarchar"
+			},
+			{
+				"name": "product_description",
+				"type": "nvarchar"
+			},
+			{
+				"name": "issue_date",
+				"type": "nvarchar"
+			},
+			{
+				"name": "valid_till_date",
+				"type": "nvarchar"
+			},
+			{
+				"name": "account_status",
+				"type": "nvarchar"
+			},
+			{
+				"name": "credit_card_limit",
+				"type": "nvarchar"
+			},
+			{
+				"name": "interest_rate",
+				"type": "nvarchar"
+			},
+			{
+				"name": "tenure",
+				"type": "nvarchar"
+			},
+			{
+				"name": "service_charges",
+				"type": "nvarchar"
+			},
+			{
+				"name": "customer_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "fd_principal_amount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "loan_collateral_value",
+				"type": "nvarchar"
+			},
+			{
+				"name": "loan_amount",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Products"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
