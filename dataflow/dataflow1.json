@@ -50,6 +50,21 @@
 				},
 				{
 					"name": "JoinAddressandCustomer"
+				},
+				{
+					"name": "transactionAggregations"
+				},
+				{
+					"name": "ProductsAggregations"
+				},
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "join1"
+				},
+				{
+					"name": "join2"
 				}
 			],
 			"scriptLines": [
@@ -157,7 +172,22 @@
 				"Customer derive(Age = floor(round(monthsBetween(currentDate(),toDate(concat (split(split(dob, ' ')[1], '/')[3], '-',split(split(dob, ' ')[1], '/')[1], '-', split(split(dob, ' ')[1], '/')[2])),  true()))/12)) ~> CustomerDerivedColumn",
 				"CustomerDerivedColumn, AddresDerivedColumn join(Customer@customer_id == Address@customer_id,",
 				"     joinType:'inner',",
-				"     broadcast: 'auto')~> JoinAddressandCustomer"
+				"     broadcast: 'auto')~> JoinAddressandCustomer",
+				"derivedColumn1 aggregate(groupBy(customer_id),",
+				"     Deposites = sumIf(type_deposit_withdrawal == 'D', toInteger(transaction_amount)),",
+				"          Withdrawals = sumIf(type_deposit_withdrawal == 'W', toInteger(transaction_amount)),",
+				"          HasCreditCard = maxIf(HasCreditCard== 'Y', HasCreditCard)) ~> transactionAggregations",
+				"Products aggregate(groupBy(customer_id),",
+				"     ProductCount = count(product_id)) ~> ProductsAggregations",
+				"Transactions derive(HasCreditCard = case(or(transaction_description == 'credit card Withdrawal', trim(transaction_description) == 'credit card Deposit' )\r",
+				"\r",
+				", 'Y', 'N')) ~> derivedColumn1",
+				"ProductsAggregations, JoinAddressandCustomer join(ProductsAggregations@customer_id == Customer@customer_id,",
+				"     joinType:'inner',",
+				"     broadcast: 'auto')~> join1",
+				"transactionAggregations, join1 join(transactionAggregations@customer_id == ProductsAggregations@customer_id,",
+				"     joinType:'inner',",
+				"     broadcast: 'auto')~> join2"
 			]
 		}
 	}
