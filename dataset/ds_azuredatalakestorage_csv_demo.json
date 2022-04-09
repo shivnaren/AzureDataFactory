@@ -1,0 +1,23 @@
+{
+	"name": "ds_azuredatalakestorage_csv_demo",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_azuredatalakestorage_demo",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "Demo",
+				"fileSystem": "level1"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
