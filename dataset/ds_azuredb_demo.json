@@ -1,0 +1,69 @@
+{
+	"name": "ds_azuredb_demo",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_azuredb_demo",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "address_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "address_type",
+				"type": "nvarchar"
+			},
+			{
+				"name": "address1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "address2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "address3",
+				"type": "nvarchar"
+			},
+			{
+				"name": "city",
+				"type": "nvarchar"
+			},
+			{
+				"name": "state",
+				"type": "nvarchar"
+			},
+			{
+				"name": "country",
+				"type": "nvarchar"
+			},
+			{
+				"name": "zipcode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "phone",
+				"type": "nvarchar"
+			},
+			{
+				"name": "email",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Fax",
+				"type": "nvarchar"
+			},
+			{
+				"name": "customer_id",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Address"
+		}
+	}
+}
