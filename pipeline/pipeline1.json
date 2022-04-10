@@ -1143,7 +1143,12 @@
 				"typeProperties": {
 					"dataflow": {
 						"referenceName": "dataflow1",
-						"type": "DataFlowReference"
+						"type": "DataFlowReference",
+						"datasetParameters": {
+							"sink1": {
+								"filename": "Customerfinal.csv"
+							}
+						}
 					},
 					"compute": {
 						"coreCount": 8,
