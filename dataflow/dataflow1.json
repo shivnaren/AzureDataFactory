@@ -40,7 +40,11 @@
 					"name": "SRS"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "AddresDerivedColumn"
@@ -187,7 +191,11 @@
 				"     broadcast: 'auto')~> join1",
 				"transactionAggregations, join1 join(transactionAggregations@customer_id == ProductsAggregations@customer_id,",
 				"     joinType:'inner',",
-				"     broadcast: 'auto')~> join2"
+				"     broadcast: 'auto')~> join2",
+				"join2 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
 		}
 	}
